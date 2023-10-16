@@ -1,4 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1> Register</h1>
+<div class = "col-md-6 offset-md-3">
+    <form method="POST" action="">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Your Input has form has Errors
+                {%for error in form.errors %} 
+                    {%if fields.errors%}
+                        {{fields.errors}}
+                    {% endif %}
+                {% endfor %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
+        {{form.as_p}}
+
+        <button type="submit" class="btn btn-secondary">login</button>
+    </form>
+</div>
+
 {% endblock %}
